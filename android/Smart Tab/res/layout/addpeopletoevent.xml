@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:id="@+id/console_content_addpeopletoevent"
+		android:text="@string/console_initial_content" />
+	<Button android:id="@+id/add_event_persons_next_button"
+		android:layout_width="match_parent" android:layout_height="wrap_content"
+		android:text="@string/next"></Button>
+	<TextView android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_height="wrap_content" android:layout_width="match_parent"
+		android:text="@string/who_i_owe" android:id="@+id/who_do_i_owe_title"></TextView>
+	<Button android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:id="@+id/who_do_i_owe_button"
+		android:text="@string/who_do_i_owe"></Button>
+	<TextView android:textAppearance="?android:attr/textAppearanceMedium"
+		android:id="@+id/textView1" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:text="@string/who_owes_me"></TextView>
+	<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:text="TextView" android:id="@+id/add_event_person_console"></TextView>
+	<View android:layout_width="fill_parent" android:layout_height="2dp" android:background="#888888"/>
+	<ListView android:id="@+id/persons_who_owe_me_list"
+		android:layout_height="match_parent" android:layout_width="match_parent"
+		android:choiceMode="multipleChoice"></ListView>
+</LinearLayout>

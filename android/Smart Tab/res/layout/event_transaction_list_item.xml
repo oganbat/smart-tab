@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal" android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="match_parent"
+		android:layout_height="match_parent" android:paddingTop="5dp"
+		android:paddingLeft="5dp">
+		<TextView android:layout_alignParentTop="true"
+			android:layout_height="wrap_content" android:text="TextView"
+			android:layout_width="wrap_content" android:id="@id/person_name"
+			android:textStyle="bold"></TextView>
+		<TextView android:layout_alignParentTop="true"
+			android:layout_toRightOf="@id/person_name" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/transaction_amount"
+			android:text="TextView" android:paddingLeft="5dp"></TextView>
+		<TextView android:layout_alignParentTop="true"
+			android:layout_toRightOf="@id/transaction_amount" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/transaction_direction"
+			android:text="TextView" android:paddingLeft="5dp"></TextView>
+		<TextView android:layout_alignParentTop="true"
+			android:layout_toRightOf="@id/transaction_direction" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/transaction_status"
+			android:text="TextView" android:paddingLeft="5dp"></TextView>
+	</RelativeLayout>
+</LinearLayout>

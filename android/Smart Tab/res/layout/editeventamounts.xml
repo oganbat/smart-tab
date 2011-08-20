@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<Button android:id="@+id/edit_event_amounts_next_button"
+		android:layout_width="match_parent" android:layout_height="wrap_content"
+		android:text="@string/confirm"></Button>
+	<TextView android:textAppearance="?android:attr/textAppearanceMedium"
+		android:id="@+id/textView1" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:text="@string/console_title"></TextView>
+	<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Console.." android:id="@+id/edit_event_amount_console"></TextView>
+	<View android:layout_width="fill_parent" android:layout_height="2dp" android:background="#888888"/>
+</LinearLayout>

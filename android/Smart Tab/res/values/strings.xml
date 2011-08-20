@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">This is Bhavna\'s first app; well, kinda :)</string>
+    <string name="app_name">Fast Tab</string>
+    <string name="home_label">Fast Tab</string>
+    <string name="addevent_label">New Event</string>
+    <string name="addpeopletoevent_label">Add People to Event</string>
+    <string name="add_event">Add Event</string>
+    <string name="list_persons">List People</string>
+    <string name="recent_history">Recent History</string>
+    <string name="recent_debits">Recent Debits</string>
+    <string name="recent_credits">Recent Credits</string>
+    <string name="console_title">Computer Says...</string>
+    <string name="console_initial_content">Nothing for now :)</string>
+    <string name="event_name">Event Name</string>
+    <string name="amount">Amount</string>
+    <string name="next">Next -></string>
+    <string name="confirm">Confirm</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="who_i_owe">Who do I Owe?</string>
+    <string name="who_owes_me">Who Owes Me</string>
+    <string name="who_do_i_owe">Pick Person I Owe</string>
+    <string name="editeeventamount_label">Edit Event Amount</string>
+    <string name="eventlist_label">List of Events</string>
+    <string name="personlist_label">List of People</string>
+    <string name="addperson_label">Add a Person</string>
+    <string name="add_person">Add Person</string>
+    <string name="person_name_hint">Name</string>
+    <string name="person_email_hint">Email Address</string>
+    <string name="person_phone_hint">Phone Number</string>
+</resources>
