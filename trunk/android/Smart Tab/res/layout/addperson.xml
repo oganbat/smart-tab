@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<EditText android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:inputType="textCapWords"
+		android:singleLine="true" android:id="@+id/person_name" android:hint="@string/person_name_hint">
+		<requestFocus></requestFocus>
+	</EditText>
+	<EditText android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:inputType="textEmailAddress"
+		android:id="@+id/person_email" android:hint="@string/person_email_hint"></EditText>
+	<EditText android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:inputType="phone"
+		android:id="@+id/person_phone" android:hint="@string/person_phone_hint"></EditText>
+	<Button android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@+id/addperson_button"
+		android:text="@string/add_person"></Button>
+</LinearLayout>
