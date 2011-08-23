@@ -22,7 +22,7 @@
     <string name="who_owes_me">Who Owes Me</string>
     <string name="who_do_i_owe">Pick Person I Owe</string>
     <string name="editeeventamount_label">Edit Event Amount</string>
-    <string name="eventlist_label">List of Events</string>
+    <string name="eventlist_label">Recent History</string>
     <string name="personlist_label">List of People</string>
     <string name="addperson_label">Add a Person</string>
     <string name="add_person">Add Person</string>
