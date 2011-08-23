@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
-	<EditText android:layout_height="wrap_content"
-		android:layout_width="match_parent" android:hint="@string/event_name"
-		android:id="@+id/event_name" android:inputType="text"
-		android:singleLine="true">
-		<requestFocus></requestFocus>
-	</EditText>
-	<EditText android:layout_height="wrap_content"
-		android:layout_width="match_parent" android:inputType="numberDecimal"
-		android:hint="@string/amount" android:id="@+id/event_amount"></EditText>
-	<EditText android:layout_height="wrap_content"
-		android:layout_width="match_parent" android:inputType="text"
-		android:id="@+id/event_description" android:hint="@string/description"></EditText>
-	<TextView android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView2" android:layout_width="wrap_content" android:text="@string/date"></TextView>
-	<DatePicker android:layout_gravity="center_horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/event_date"></DatePicker>
-	<Button android:layout_height="wrap_content" android:id="@+id/next_button"
-		android:text="@string/next" android:layout_width="match_parent"></Button>
-</LinearLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<EditText android:layout_height="wrap_content"
+			android:layout_width="match_parent" android:hint="@string/event_name"
+			android:id="@+id/event_name" android:inputType="text"
+			android:singleLine="true">
+			<requestFocus></requestFocus>
+		</EditText>
+		<EditText android:layout_height="wrap_content"
+			android:layout_width="match_parent" android:inputType="numberDecimal"
+			android:hint="@string/amount" android:id="@+id/event_amount"></EditText>
+		<EditText android:layout_height="wrap_content"
+			android:layout_width="match_parent" android:inputType="text"
+			android:id="@+id/event_description" android:hint="@string/description"></EditText>
+		<TextView android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:id="@+id/textView2" android:layout_width="wrap_content"
+			android:text="@string/date"></TextView>
+		<DatePicker android:layout_gravity="center_horizontal"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:id="@+id/event_date"></DatePicker>
+		<Button android:layout_height="wrap_content" android:id="@+id/next_button"
+			android:text="@string/next" android:layout_width="match_parent"></Button>
+	</LinearLayout>
+</ScrollView>

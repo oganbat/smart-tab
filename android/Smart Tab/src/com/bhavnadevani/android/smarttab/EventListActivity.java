@@ -94,11 +94,19 @@ public class EventListActivity extends Activity {
 
 		ListView eventListView = (ListView) findViewById(R.id.event_list);
 
-		// TODO This is deprecated. Replace with something else later
+		// TODO This is deprecated. Replace with something else later. Below
+		// code altered to remove event_direction from view
+		/*
+		 * eventListAdapter = new SimpleCursorAdapter(getApplicationContext(),
+		 * R.layout.event_list_item, eventCursor, new String[] { "title",
+		 * "amount", "direction" }, new int[] { R.id.event_name,
+		 * R.id.event_amount, R.id.event_direction });
+		 */
+
 		eventListAdapter = new SimpleCursorAdapter(getApplicationContext(),
 				R.layout.event_list_item, eventCursor, new String[] { "title",
-						"amount", "direction" }, new int[] { R.id.event_name,
-						R.id.event_amount, R.id.event_direction });
+						"amount" }, new int[] { R.id.event_name,
+						R.id.event_amount });
 
 		eventListView.setAdapter(eventListAdapter);
 
