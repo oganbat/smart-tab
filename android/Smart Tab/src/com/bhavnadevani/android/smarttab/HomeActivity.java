@@ -27,13 +27,13 @@ public class HomeActivity extends Activity {
 
 		addEventButton.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				TextView consoleContent = (TextView) findViewById(R.id.console_content);
-				consoleContent.append("\nAdd Event Pressed.");
+//			@Override
+						public void onClick(View v) {
+			//TextView consoleContent = (TextView) findViewById(R.id.console_content);
+			//consoleContent.append("\nAdd Event Pressed.");
 
 				// log that the button was pressed
-				Log.d(LOG_TAG, "Add Event Pressed, Launching new activity");
+			//Log.d(LOG_TAG, "Add Event Pressed, Launching new activity");
 
 				// launch the add event activity
 				// set up an intent to launch the AddEventActivity specifically
