@@ -17,6 +17,10 @@
 			android:layout_width="wrap_content" android:id="@id/event_amount"
 			android:text="TextView" android:paddingLeft="5dp"
 			android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
+		<TextView android:layout_alignParentLeft="true"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/event_date"
+			android:layout_below="@id/event_name"></TextView>
 		<!-- <TextView android:layout_alignParentTop="true"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:id="@+id/event_direction"

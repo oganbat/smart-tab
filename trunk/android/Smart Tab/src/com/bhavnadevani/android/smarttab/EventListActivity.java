@@ -3,18 +3,22 @@ package com.bhavnadevani.android.smarttab;
 import com.bhavnadevani.android.smarttab.db.SmartTabDBHelper;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 public class EventListActivity extends Activity {
 
@@ -103,10 +107,13 @@ public class EventListActivity extends Activity {
 		 * R.id.event_amount, R.id.event_direction });
 		 */
 
-		eventListAdapter = new SimpleCursorAdapter(getApplicationContext(),
-				R.layout.event_list_item, eventCursor, new String[] { "title",
-						"amount" }, new int[] { R.id.event_name,
-						R.id.event_amount });
+		// eventListAdapter = new SimpleCursorAdapter(getApplicationContext(),
+		// R.layout.event_list_item, eventCursor, new String[] { "title",
+		// "amount", "date" }, new int[] { R.id.event_name,
+		// R.id.event_amount, R.id.event_date });
+
+		eventListAdapter = new EventListCursorAdapter(EventListActivity.this,
+				eventCursor, false);
 
 		eventListView.setAdapter(eventListAdapter);
 
@@ -150,4 +157,55 @@ public class EventListActivity extends Activity {
 		startManagingCursor(eventCursor);
 
 	}
+
+	/**
+	 * Our own custom class which defines a custom adapter for our event list
+	 * 
+	 */
+	class EventListCursorAdapter extends CursorAdapter {
+
+		public EventListCursorAdapter(Context context, Cursor c,
+				boolean autoRequery) {
+			super(context, c, autoRequery);
+		}
+
+		@Override
+		public void bindView(View providedView, Context providedContext, Cursor providedCursor) {
+			//first, get the views
+			TextView nameView = (TextView) providedView.findViewById(R.id.event_name);
+			TextView amountView = (TextView) providedView.findViewById(R.id.event_amount);
+			TextView dateView = (TextView) providedView.findViewById(R.id.event_date);
+			
+			//then, get the strings from the cursor
+			String name = providedCursor.getString(providedCursor.getColumnIndex("title"));
+			String amount = "$"+providedCursor.getString(providedCursor.getColumnIndex("amount"));
+			String date = providedCursor.getString(providedCursor.getColumnIndex("date")) ;
+			
+			//now, assign the strings to the views
+			nameView.setText(name);
+			amountView.setText(amount);
+			dateView.setText(Utils.convertRawDateToDisplayDate(date));
+			
+//			if(true){
+//				providedView.setb
+//			}
+			
+
+		}
+
+		// eventListAdapter = new SimpleCursorAdapter(getApplicationContext(),
+		// R.layout.event_list_item, eventCursor, new String[] { "title",
+		// "amount", "date" }, new int[] { R.id.event_name,
+		// R.id.event_amount, R.id.event_date });
+
+		@Override
+		public View newView(Context context, Cursor cursor, ViewGroup parent) {
+			// return a new view using R.layout.event_list_item
+			final View retView = LayoutInflater.from(EventListActivity.this)
+					.inflate(R.layout.event_list_item, null);
+			return retView;
+		}
+
+	}
+
 }
