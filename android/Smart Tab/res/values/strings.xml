@@ -29,4 +29,5 @@
     <string name="person_name_hint">Name</string>
     <string name="person_email_hint">Email Address</string>
     <string name="person_phone_hint">Phone Number</string>
+    <string name="pick_who_owes_me">Pick Person Who Owes Me</string>
 </resources>

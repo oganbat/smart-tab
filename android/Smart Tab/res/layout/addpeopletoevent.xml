@@ -17,10 +17,23 @@
 	<TextView android:textAppearance="?android:attr/textAppearanceMedium"
 		android:id="@+id/textView1" android:layout_height="wrap_content"
 		android:layout_width="match_parent" android:text="@string/who_owes_me"></TextView>
-	<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:text="TextView" android:id="@+id/add_event_person_console"></TextView>
-	<View android:layout_width="fill_parent" android:layout_height="2dp" android:background="#888888"/>
-	<ListView android:id="@+id/persons_who_owe_me_list"
-		android:choiceMode="multipleChoice" android:layout_width="wrap_content" android:layout_height="224dp"></ListView>
-	<Button android:id="@+id/Button1" android:text="Cancel" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
-	<Button android:text="Save" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+
+	<Button
+	    android:id="@+id/who_owes_me_button"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/pick_who_owes_me" />
+
+	<Button
+	    android:id="@+id/Button1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Cancel" />
+
+	<Button
+	    android:id="@+id/button1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Save" />
+
 </LinearLayout>
