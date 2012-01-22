@@ -36,16 +36,18 @@ import android.widget.Toast;
 
 public class AddPeopleToEventActivity extends Activity {
 	
-	protected static final int PICK_PERSON_DIALOG = 0;
+	protected static final int PICK_PERSON_I_OWE_DIALOG = 0;
+	protected static final int PICK_PERSON_WHO_OWES_ME_DIALOG = 1;
 	CursorAdapter personListAdapter;
 	Cursor personCursor;
 	TextView console;
 	TextView addEventPersonConsole;
 	
-	long iOweToID  = Constants.INVALID_PERSON_ID;
-	String iOweToName = ""; //blank means noone
+	long personId  = Constants.INVALID_PERSON_ID;
+	String personName = ""; //blank means noone
 	
-	Button pickPersonButton;
+	Button pickPersonIOweButton;
+	Button pickPersonWhoOwesMeButton;
 	
 	/** list of selected people. Stored as a hashmap to be able to store names also*/
 	HashMap<String, String> selectedPeopleMap = new HashMap<String, String>();
@@ -103,10 +105,6 @@ public class AddPeopleToEventActivity extends Activity {
 			Log.i(Constants.LOG_TAG, id + ": " + name + ", " + email + ", " + phone);
 		}
 		
-		addEventPersonConsole = (TextView)findViewById(R.id.add_event_person_console);
-		
-		ListView personListView = (ListView)findViewById(R.id.persons_who_owe_me_list);
-		
 		//TODO This is deprecated. Replace with something else later
 		personListAdapter = new SimpleCursorAdapter(
 				getApplicationContext(), 
@@ -116,157 +114,45 @@ public class AddPeopleToEventActivity extends Activity {
 				new int[] {R.id.person_name, R.id.person_email, R.id.person_phone}
 		);
 		
-		personListView.setAdapter(personListAdapter);
-		
-		personListView.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position,
-					long id) {
-				Log.d(Constants.LOG_TAG, "item "+id +" clicked");
-				//Toast.makeText(getApplicationContext(), "ID " + id + " clicked!", Toast.LENGTH_SHORT).show();
-				//get ID, if it is already toggled, untoggle it, else toggle it.
-				//go to the cursor, get that item
-				personCursor.moveToPosition(position);
-				
-				String pid = personCursor.getString(0); //index of the ID field
-				String name = personCursor.getString(1); //index of the name field
-				String email = personCursor.getString(2); //index of the email field
-				String phone = personCursor.getString(3); //index of the phone field
-				Log.i(Constants.LOG_TAG, pid + ": " + name + ", " + email + ", " + phone);
-				
-				//store this person in a list, to be used in next activity
-				
-				String id_string = String.valueOf(id);
-				String selectedPersonName = selectedPeopleMap.get(id_string); 
-				if(selectedPersonName == null){
-					//not currently added, add this person
-					selectedPeopleMap.put(id_string, name);
-				} else {
-					//remove it
-					selectedPeopleMap.remove(id_string);
-				}
-				
-				//redraw console
-				//TODO replace it with a nicer UI
-				updateConsole();
-				
-			}
-		});
-		
 		startManagingCursor(personCursor);
 		
-		//set handler on button to show dialog with people
-		pickPersonButton = (Button)findViewById(R.id.who_do_i_owe_button);
-		pickPersonButton.setOnClickListener(new OnClickListener() {
+		//set handler on buttons to show dialog with people
+		pickPersonIOweButton = (Button) findViewById(R.id.who_do_i_owe_button);
+		pickPersonIOweButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.d(Constants.LOG_TAG,"Pick Person Button Clicked!");
-				showDialog(PICK_PERSON_DIALOG);
+				Log.d(Constants.LOG_TAG,"Pick Person I Owe Button Clicked!");
+				showDialog(PICK_PERSON_I_OWE_DIALOG);
 			}
 		});
-		
-		Button nextButton = (Button)findViewById(R.id.add_event_persons_next_button);
-		nextButton.setOnClickListener(new OnClickListener() {
-			
+		pickPersonWhoOwesMeButton = (Button) findViewById(R.id.who_owes_me_button);
+		pickPersonWhoOwesMeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
-				//now start the new activity
-				//get the old bundle
-				Bundle eventInfoWithPersonsBundle = getIntent().getExtras().getBundle(Constants.EVENT_INFO_BUNDLE_NAME);
-				//add stuff to it
-				
-				if(iOweToID == Constants.INVALID_PERSON_ID){
-					//I owe no one
-					if(selectedPeopleMap.size() == 0){
-						//No one owes me
-						Toast.makeText(AddPeopleToEventActivity.this, "No people selected", Toast.LENGTH_SHORT).show();
-						return;
-					} else {
-						//some folks owe me
-						Log.d(LOG_TAG, "All is well in validation, proceeding to pack bundle");
-					}
-				} else {
-					//I owe someone
-					if(selectedPeopleMap.size() == 0){
-						//No one owes me
-						Log.d(LOG_TAG, "All is well in validation, proceeding to pack bundle");
-					} else {
-						//some folks owe me
-						Toast.makeText(AddPeopleToEventActivity.this, "You can either owe or be owed. Pick one.", Toast.LENGTH_SHORT).show();
-						return;
-					}
-				}
-				
-				
-				//add ioweto ID and name
-				eventInfoWithPersonsBundle.putLong(Constants.IOWEWHO_ID_BUNDLE_KEY, iOweToID);
-				eventInfoWithPersonsBundle.putString(Constants.IOWEWHO_NAME_BUNDLE_KEY, iOweToName);
-				
-				//add owestome IDs and names
-				Set<String> tempKeySet = selectedPeopleMap.keySet();
-				String[] tempKeyStringArray = new String[tempKeySet.size()];
-				int i = 0;
-				for(String tempKeyString : tempKeySet){
-					tempKeyStringArray[i++] = tempKeyString;
-				}
-				eventInfoWithPersonsBundle.putStringArray(Constants.WHOOWESME_IDS_BUNDLE_KEY, tempKeyStringArray);
-				Collection<String> tempNamesSet = selectedPeopleMap.values();
-				String[] tempNamesStringArray = new String[tempNamesSet.size()];
-				int j = 0;
-				for(String tempNameString : tempNamesSet){
-					tempNamesStringArray[j++] = tempNameString;
-				}
-				eventInfoWithPersonsBundle.putStringArray(Constants.WHOOWESME_NAMES_BUNDLE_KEY, tempNamesStringArray);
-				
-				//create new intent for next activity
-				Intent newIntent = new Intent(getApplicationContext(), EditEventAmountsActivity.class);
-				
-				//launch it
-				newIntent.putExtra(Constants.EVENT_WITH_PAYEE_INFO_BUNDLE_NAME, eventInfoWithPersonsBundle);
-				startActivity(newIntent);
-
+				Log.d(Constants.LOG_TAG,"Pick Person Who Owes Me Button Clicked!");
+				showDialog(PICK_PERSON_WHO_OWES_ME_DIALOG);
 			}
 		});
-		
-		//update the console
-		updateConsole();
 		
 	}
 	
-	/** updates the consoleView with currently selected people*/
-	void updateConsole(){
-		StringBuilder consoleString = new StringBuilder();
-		consoleString.append("Currently: ");
-		
-		if (selectedPeopleMap.size() == 0){
-			consoleString.append("nobody");
-		} else{
-			for(String name : selectedPeopleMap.values()){
-				consoleString.append(name + ", ");
-			}
-			//remove the last comma :)
-			consoleString.deleteCharAt(consoleString.length() - 2);
-		}
-
-		Log.d(Constants.LOG_TAG,"Updating console with " + consoleString);
-		addEventPersonConsole.setText(consoleString);
-		
-	}
 	
 	@Override
 	protected Dialog onCreateDialog(int id) {
+		final int dialogId = id;
 		Log.d(Constants.LOG_TAG,"Now creating dialog with ID " + id);
-
+		String title = "Pick Person Who I Owe";
+		
+		if (id == PICK_PERSON_WHO_OWES_ME_DIALOG) title = "Pick Person Who Owes Me";
+		
 		AlertDialog.Builder builder = new AlertDialog.Builder(AddPeopleToEventActivity.this);
-		builder.setTitle("Pick Person Who I Owe");
+		builder.setTitle(title);
 		
-		ListView iOweList = new ListView(this);
+		ListView personsList = new ListView(this);
 		
-		iOweList.setAdapter(personListAdapter);
+		personsList.setAdapter(personListAdapter);
 		
-		iOweList.setOnItemClickListener(new OnItemClickListener() {
+		personsList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -283,23 +169,26 @@ public class AddPeopleToEventActivity extends Activity {
 				String phone = personCursor.getString(3); //index of the phone field
 				Log.i(Constants.LOG_TAG, "I owe to " + pid + ": " + name + ", " + email + ", " + phone);
 				
-				if(iOweToID == id){
+				if(personId == id){
 					//already selected, so deselect it
-					iOweToID  = Constants.INVALID_PERSON_ID;
-					iOweToName = ""; //blank means noone
+					personId  = Constants.INVALID_PERSON_ID;
+					personName = ""; //blank means noone
 				} else {
-					iOweToID = id;
-					iOweToName = name;
+					personId = id;
+					personName = name;
 				}
 				
+				Button button = pickPersonIOweButton;
+				if (dialogId == PICK_PERSON_WHO_OWES_ME_DIALOG) {
+					button = pickPersonWhoOwesMeButton;
+				}
+				button.setText(personName + " (Tap to Change/Toggle)");
 				
-				pickPersonButton.setText(iOweToName + " (Tap to Change/Toggle)");
-				
-				dismissDialog(PICK_PERSON_DIALOG);
+				dismissDialog(dialogId);
 			}
 		});
 
-		builder.setView(iOweList);
+		builder.setView(personsList);
 		Dialog dialog = builder.create();
 		
 		//Dialog dialog = new ProgressDialog(getApplicationContext()); 
