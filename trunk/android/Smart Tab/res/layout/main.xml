@@ -7,10 +7,10 @@
 	<Button android:text="@string/recent_history"
 		android:layout_width="wrap_content" android:id="@+id/see_recent_history_button"
 		android:layout_height="wrap_content"></Button>
-	<Button android:layout_width="wrap_content" android:id="@+id/see_recent_credits_button"
-		android:layout_height="wrap_content" android:text="@string/recent_credits"></Button>
-	<Button android:text="@string/recent_debits"
-		android:layout_width="wrap_content" android:id="@+id/see_recent_debits_button"
+	<Button android:layout_width="wrap_content" android:id="@+id/see_incoming_button"
+		android:layout_height="wrap_content" android:text="@string/incoming"></Button>
+	<Button android:text="@string/outgoing"
+		android:layout_width="wrap_content" android:id="@+id/see_outgoing_button"
 		android:layout_height="wrap_content"></Button>
 	<Button android:text="@string/list_persons"
 		android:layout_width="wrap_content" android:id="@+id/list_persons"

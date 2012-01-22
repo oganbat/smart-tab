@@ -2,29 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="horizontal" android:layout_width="match_parent"
 	android:layout_height="match_parent">
-
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical" android:layout_width="match_parent"
 		android:layout_height="match_parent" android:paddingTop="5dp">
+		<CheckBox android:layout_height="wrap_content" android:id="@+id/checkBox1"
+			 android:layout_width="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"></CheckBox>
 		<TextView android:layout_alignParentTop="true"
-			android:layout_height="wrap_content" android:text="TextView"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:layout_width="wrap_content" android:id="@id/event_name"
-			android:textStyle="bold"></TextView>
-		<TextView android:layout_alignParentTop="true"
-			android:layout_alignParentRight="true"
-			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true" android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:id="@id/event_amount"
 			android:text="TextView" android:paddingLeft="5dp"
 			android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
-		<TextView android:layout_alignParentLeft="true"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/event_date"
-			android:layout_below="@id/event_name"></TextView>
-		<!-- <TextView android:layout_alignParentTop="true"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/event_direction"
-			android:text="TextView" android:paddingLeft="5dp"
-			android:textAppearance="?android:attr/textAppearanceLarge" android:layout_alignParentRight="true"></TextView> -->
+		<TextView android:layout_toRightOf="@id/checkBox1"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:id="@+id/event_date" android:layout_below="@id/event_name"></TextView>
+		<!-- <TextView android:layout_alignParentTop="true" android:layout_height="wrap_content" 
+			android:layout_width="wrap_content" android:id="@+id/event_direction" android:text="TextView" 
+			android:paddingLeft="5dp" android:textAppearance="?android:attr/textAppearanceLarge" 
+			android:layout_alignParentRight="true"></TextView> -->
+		<TextView android:layout_height="wrap_content"
+			android:textStyle="bold" android:layout_width="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:id="@id/event_name" android:text="TextView" android:layout_alignParentTop="true"
+			android:layout_toRightOf="@id/checkBox1"></TextView>
+		<Button android:layout_width="wrap_content" android:id="@+id/button1" android:text="Paid!" android:layout_height="wrap_content" android:layout_below="@+id/event_date" android:layout_alignParentLeft="true" android:layout_marginTop="186dp"></Button>
+		
 	</RelativeLayout>
 </LinearLayout>
