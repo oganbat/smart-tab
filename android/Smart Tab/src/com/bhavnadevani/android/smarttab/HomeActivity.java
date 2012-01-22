@@ -30,7 +30,7 @@ public class HomeActivity extends Activity {
 						public void onClick(View v) {
 			//TextView consoleContent = (TextView) findViewById(R.id.console_content);
 			//consoleContent.append("\nAdd Event Pressed.");
-
+ 
 				// log that the button was pressed
 			Log.d(LOG_TAG, "Add Event Pressed, Launching new activity");
 
