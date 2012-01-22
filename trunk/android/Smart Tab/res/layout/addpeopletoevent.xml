@@ -21,6 +21,6 @@
 	<View android:layout_width="fill_parent" android:layout_height="2dp" android:background="#888888"/>
 	<ListView android:id="@+id/persons_who_owe_me_list"
 		android:choiceMode="multipleChoice" android:layout_width="wrap_content" android:layout_height="224dp"></ListView>
-	<Button android:text="Save" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
 	<Button android:id="@+id/Button1" android:text="Cancel" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
+	<Button android:text="Save" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
 </LinearLayout>
