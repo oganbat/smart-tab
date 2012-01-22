@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 
 import static com.bhavnadevani.android.smarttab.Constants.LOG_TAG;
 
@@ -33,7 +32,7 @@ public class HomeActivity extends Activity {
 			//consoleContent.append("\nAdd Event Pressed.");
 
 				// log that the button was pressed
-			//Log.d(LOG_TAG, "Add Event Pressed, Launching new activity");
+			Log.d(LOG_TAG, "Add Event Pressed, Launching new activity");
 
 				// launch the add event activity
 				// set up an intent to launch the AddEventActivity specifically
@@ -56,7 +55,7 @@ public class HomeActivity extends Activity {
 					}
 				});
 
-		((Button) findViewById(R.id.see_recent_credits_button))
+		((Button) findViewById(R.id.see_incoming_button))
 		.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -68,7 +67,7 @@ public class HomeActivity extends Activity {
 			}
 		});
 
-		((Button) findViewById(R.id.see_recent_debits_button))
+		((Button) findViewById(R.id.see_outgoing_button))
 		.setOnClickListener(new OnClickListener() {
 
 			@Override

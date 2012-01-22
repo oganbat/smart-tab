@@ -8,8 +8,8 @@
     <string name="add_event">Add Event</string>
     <string name="list_persons">List People</string>
     <string name="recent_history">Recent History</string>
-    <string name="recent_debits">Recent Debits</string>
-    <string name="recent_credits">Recent Credits</string>
+    <string name="outgoing">Outgoing</string>
+    <string name="incoming">Incoming</string>
     <string name="console_title">Computer Says...</string>
     <string name="console_initial_content">Nothing for now :)</string>
     <string name="event_name">Event Name</string>
