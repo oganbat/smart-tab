@@ -1,0 +1,1 @@
+This Android app tracks transactions where someone has covered for you, making sure to keep friendships without that animosity of money
